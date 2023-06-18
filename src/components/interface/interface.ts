@@ -1,6 +1,6 @@
 export interface Options {
-    sources: string;
-    apiKey: string;
+    readonly sources: string;
+    readonly apiKey: string;
 }
 
 export interface DrawData {
@@ -9,18 +9,17 @@ export interface DrawData {
 }
 
 export interface SourceData {
-    name: string;
-    id: string;
+    readonly [key: string]: string;
 }
 
 export interface NewsItem {
-    urlToImage?: string;
-    author?: string;
-    source?: {
+    readonly urlToImage?: string;
+    readonly author?: string;
+    readonly source?: {
         name: string;
     };
-    publishedAt: string;
-    title: string;
-    description: string;
-    url: string;
+    readonly publishedAt: string;
+    readonly title: string;
+    readonly description: string;
+    readonly url: string;
 }
