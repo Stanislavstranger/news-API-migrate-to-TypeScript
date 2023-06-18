@@ -7,17 +7,17 @@ export class AppView {
 
     private sources: Sources;
 
-    protected constructor() {
+    public constructor() {
         this.news = new News();
         this.sources = new Sources();
     }
 
-    protected drawNews(data: { articles?: NewsItem[] }): void {
+    public drawNews(data: { articles?: NewsItem[] }): void {
         const values = data?.articles || [];
         this.news.draw(values);
     }
 
-    protected drawSources(data: { sources?: SourceData[] }): void {
+    public drawSources(data: { sources?: SourceData[] }): void {
         const values = data?.sources || [];
         this.sources.draw(values);
     }

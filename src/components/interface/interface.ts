@@ -4,7 +4,7 @@ export interface Options {
 }
 
 export interface DrawData {
-    readonly source: SourceData[];
+    readonly sources: SourceData[];
     readonly articles: NewsItem[];
 }
 
