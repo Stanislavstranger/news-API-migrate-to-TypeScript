@@ -14,11 +14,13 @@ export interface SourceData {
 }
 
 export interface NewsItem {
-    source: string;
-    author: string;
+    urlToImage?: string;
+    author?: string;
+    source?: {
+        name: string;
+    };
+    publishedAt: string;
     title: string;
     description: string;
     url: string;
-    urlToImage: string;
-    content: string;
 }
