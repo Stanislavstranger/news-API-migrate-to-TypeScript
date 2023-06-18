@@ -1,5 +1,5 @@
 export interface Options {
-    source: string;
+    sources: string;
     apiKey: string;
 }
 
