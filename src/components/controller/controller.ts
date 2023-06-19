@@ -2,6 +2,18 @@ import AppLoader from './appLoader';
 import { Callback } from './loader';
 
 class AppController extends AppLoader {
+    private activeElement: HTMLElement | null = null;
+
+    private setActiveElement(element: HTMLElement | null): void {
+        if (this.activeElement !== null) {
+            this.activeElement.classList.remove('_active');
+        }
+        if (element !== null) {
+            element.classList.add('_active');
+            this.activeElement = element;
+        }
+    }
+
     public getSources(callback: Callback): void {
         super.getResp(
             {
@@ -20,6 +32,7 @@ class AppController extends AppLoader {
                 const sourceId = target.getAttribute('data-source-id');
                 if (sourceId !== null && newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
+                    this.setActiveElement(target);
                     super.getResp(
                         {
                             endpoint: 'everything',
@@ -35,6 +48,7 @@ class AppController extends AppLoader {
             target = target.parentNode as HTMLElement | null;
         }
     }
+
 }
 
 export default AppController;

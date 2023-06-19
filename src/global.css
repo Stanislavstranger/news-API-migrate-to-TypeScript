@@ -1,6 +1,7 @@
 body {
     color: #fff;
-    background: #17181c;
+    background: rgb(52, 48, 47);
+    background: linear-gradient(90deg, rgba(52, 48, 47, 0.8743872549019608) 0%);
     font-family: sans-serif;
 }
 
@@ -11,25 +12,82 @@ header {
 header h1 {
     font-size: 40px;
     font-weight: 800;
+    text-align: center;
+}
+
+main {
+    background: #ECE9E6;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 footer {
-    height: 100px;
+    min-height: 60px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    row-gap: 20px;
+    padding-top: 15px;
 }
+
+footer a {
+    color: #fff;
+}
+
+footer a:hover {
+    color: #555;
+}
+
 footer .copyright {
     font-size: 14px;
-    color: #333;
     text-align: center;
 }
-footer .copyright a {
-    color: #444;
-}
+
 footer .copyright a:hover {
     color: #555;
 }
+
 footer .copyright:before {
     content: '©';
+}
+
+.logo-github img,
+.logo-rsschool img {
+    height: 40px;
+}
+
+.logo-github {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-github img {
+    margin-right: 5px;
+}
+
+.logo-github span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@media (max-width: 670px) {
+    footer {
+        flex-direction: column;
+    }
+
+    footer .logo-github {
+        order: 1;
+    }
+
+    footer .logo-rsschool {
+        order: 2;
+    }
+
+    footer .copyright {
+        order: 3;
+    }
 }

@@ -1,3 +1,13 @@
+.news{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1480px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
 .news__item {
     display: flex;
     flex-direction: column;
@@ -9,6 +19,7 @@
     font-family: Arial, sans-serif;
     border-radius: 5px;
     overflow: hidden;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .news__item:hover .news__meta-photo {
