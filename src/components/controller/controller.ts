@@ -1,3 +1,4 @@
+import { IDrawData } from '../interface/interface';
 import AppLoader from './appLoader';
 import { Callback } from './loader';
 
@@ -14,7 +15,7 @@ class AppController extends AppLoader {
         }
     }
 
-    public getSources(callback: Callback): void {
+    public getSources(callback: Callback<IDrawData>): void {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -23,7 +24,7 @@ class AppController extends AppLoader {
         );
     }
 
-    public getNews(e: Event, callback: Callback): void {
+    public getNews(e: Event, callback: Callback<IDrawData>): void {
         let target: HTMLElement | null = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
 
@@ -48,7 +49,6 @@ class AppController extends AppLoader {
             target = target.parentNode as HTMLElement | null;
         }
     }
-
 }
 
 export default AppController;

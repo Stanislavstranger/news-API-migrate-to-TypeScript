@@ -1,4 +1,4 @@
-import { Options, DrawData } from '../interface/interface';
+import { Options } from '../interface/interface';
 
 enum HTTPMethod {
     GET = 'GET',
@@ -8,10 +8,10 @@ enum HTTPMethod {
     DELETE = 'DELETE',
 }
 
-export type Callback = (data: DrawData) => void;
-export type Endpoint = 'sources' | 'everything';
+export type Callback<T> = (data: T) => void;
+export type Endpoint = 'sources' | 'everything' | 'top-headlines';
 
-abstract class Loader {
+abstract class Loader<T> {
     protected readonly baseLink: string | undefined;
 
     protected readonly options: Partial<Options>;
@@ -23,7 +23,7 @@ abstract class Loader {
 
     protected getResp(
         { endpoint, options = {} }: { endpoint: Endpoint; options?: Partial<Options> },
-        callback: Callback = (): void => {
+        callback: Callback<T> = (): void => {
             console.error('No callback for GET response');
         },
     ): void {
@@ -51,11 +51,11 @@ abstract class Loader {
         return url.slice(0, -1);
     }
 
-    protected load(method: HTTPMethod, endpoint: string, callback: Callback, options: Partial<Options> = {}): void {
+    protected load(method: HTTPMethod, endpoint: string, callback: Callback<T>, options: Partial<Options> = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
-            .then((data) => callback(data))
+            .then((data: T) => callback(data))
             .catch((err) => console.error(err));
     }
 }

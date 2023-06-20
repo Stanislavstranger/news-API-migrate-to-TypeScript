@@ -1,8 +1,8 @@
 import './news.css';
-import { NewsItem } from '../../interface/interface';
+import { INewsItem } from '../../interface/interface';
 
 class News {
-    public draw(data: NewsItem[]): void {
+    public draw(data: INewsItem[]): void {
         const news = this.filterNews(data);
 
         const fragment = document.createDocumentFragment();
@@ -17,11 +17,15 @@ class News {
         this.appendFragmentToNewsContainer(fragment);
     }
 
-    private filterNews(data: NewsItem[]): NewsItem[] {
+    private filterNews(data: INewsItem[]): INewsItem[] {
         return data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
     }
 
-    private cloneNewsItemTemplate(template: HTMLTemplateElement | null, item: NewsItem, idx: number): DocumentFragment {
+    private cloneNewsItemTemplate(
+        template: HTMLTemplateElement | null,
+        item: INewsItem,
+        idx: number,
+    ): DocumentFragment {
         const fragment = document.createDocumentFragment();
 
         if (template) {
@@ -41,7 +45,7 @@ class News {
         return fragment;
     }
 
-    private setNewsItemData(clone: HTMLElement, item: NewsItem): void {
+    private setNewsItemData(clone: HTMLElement, item: INewsItem): void {
         const metaPhoto = clone.querySelector('.news__meta-photo') as HTMLElement;
         metaPhoto.style.backgroundImage = `url(${item.urlToImage})`;
 

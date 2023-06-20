@@ -1,18 +1,23 @@
-export interface Options {
+// Interface ICommon is only added for the Pick example.
+
+interface ICommon {
     readonly sources: string;
     readonly apiKey: string;
+    readonly articles: INewsItem[];
 }
 
-export interface DrawData {
-    readonly sources: SourceData[];
-    readonly articles: NewsItem[];
+export type Options = Pick<ICommon, 'sources' | 'apiKey'>;
+
+export interface IDrawData {
+    readonly sources: ISourceData[];
+    readonly articles: INewsItem[];
 }
 
-export interface SourceData {
+export interface ISourceData {
     readonly [key: string]: string;
 }
 
-export interface NewsItem {
+export interface INewsItem {
     readonly urlToImage?: string;
     readonly author?: string;
     readonly source?: {
@@ -22,4 +27,5 @@ export interface NewsItem {
     readonly title: string;
     readonly description: string;
     readonly url: string;
+    readonly content: string;
 }
